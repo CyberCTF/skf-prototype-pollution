@@ -4,11 +4,5 @@
   "question": "Pollute Object.prototype through the merged JSON to change the application's behaviour and gain admin rights (prototype pollution).",
   "category": "WEB",
   "difficulty": 3,
-  "evidence_kind": "SECRET",
-  "capabilities": [
-    "prototype-pollution",
-    "nodejs",
-    "javascript",
-    "privilege-escalation"
-  ]
+  "evidence_kind": "SECRET"
 }

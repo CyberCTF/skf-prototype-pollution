@@ -1,7 +1,7 @@
 {
   "title": "OWASP SKF Prototype Pollution",
   "description": "A Node.js Express application that merges uploaded JSON into its objects with lodash 4.6.1, whose merge lets __proto__ keys reach Object.prototype.",
-  "question": "Pollute Object.prototype through the merged JSON to change the application's behaviour and gain admin rights (prototype pollution).",
+  "question": "Pollute Object.prototype through the merged JSON to gain admin rights (prototype pollution). The flag is in /ctf/flag.",
   "category": "WEB",
   "difficulty": 3,
   "evidence_kind": "SECRET"

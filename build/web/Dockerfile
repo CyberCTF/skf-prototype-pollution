@@ -1,6 +1,7 @@
 # Overlay of SKF labs' nodeJs/Prototype-Pollution/Dockerfile (vendored unchanged in app/). Differences:
 # - COPY ./ becomes COPY app/ (the vendored lab sits in app/ of this build folder);
 # - the entry point runs ./index.js, the lab's server; upstream's ./app.js does not exist in this lab.
+# - it creates /ctf owned by the lab user, for the per-player flag.
 
 ### Static layers
 FROM alpine:3.7
@@ -20,6 +21,9 @@ WORKDIR /home/app/Prototype-Pollution
 RUN chown -R app:app /home/app/Prototype-Pollution
 
 # Switching to the limited user
+# Overlay: the flag folder /ctf, owned by the lab user so the flag init (which runs as that user) can write it.
+RUN mkdir -p /ctf && chown app:app /ctf
+
 USER app
 
 # Installing needed binaries and deps:

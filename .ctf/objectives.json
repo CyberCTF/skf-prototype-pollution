@@ -1,0 +1,49 @@
+{
+  "objectives": [
+    {
+      "key": "main",
+      "title": "Read the flag",
+      "prompt": "Gain admin rights through prototype pollution and retrieve the flag (/ctf/flag).",
+      "check": {
+        "evidence": "SECRET",
+        "format": "FLAG{%s}"
+      },
+      "dev": "FLAG{dev-skf-prototype-pollution}",
+      "hints": [
+        "Uploaded JSON is deep-merged into the application's objects.",
+        "Read about the lodash merge prototype pollution advisories."
+      ],
+      "steps": [
+        {
+          "key": "lib",
+          "title": "Identify the library",
+          "prompt": "Which JavaScript library performs the merge?",
+          "check": {
+            "answer": [
+              "lodash"
+            ]
+          }
+        },
+        {
+          "key": "version",
+          "title": "Find the version",
+          "prompt": "Which lodash version is used? (x.y.z)",
+          "check": {
+            "answer_regex": "^\\s*4\\.6\\.1\\s*$"
+          }
+        },
+        {
+          "key": "key",
+          "title": "Name the key",
+          "prompt": "Which special property name reaches Object.prototype?",
+          "check": {
+            "answer": [
+              "__proto__",
+              "proto"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
